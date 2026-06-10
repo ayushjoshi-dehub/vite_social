@@ -1,5 +1,6 @@
 {
   "name": "socialmedia-frontend",
+  "homepage": "https://ayushjoshi-dehub.github.io/vite_social",
   "private": true,
   "version": "1.0.0",
   "description": "Social Media Platform Frontend",
@@ -9,7 +10,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
