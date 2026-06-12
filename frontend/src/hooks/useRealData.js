@@ -12,8 +12,8 @@ export const usePosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await axios.get(`${serverUrl}/api/post/feed`, { withCredentials: true });
-                setPosts(res.data);
+                const res = await axios.get(`${serverUrl}/api/post`, { withCredentials: true });
+                setPosts(res.data.posts || res.data);
             } catch (error) {
                 console.log("Posts fetch error:", error);
             } finally {
@@ -69,15 +69,8 @@ export const useMessages = () => {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const fetchMessages = async () => {
-            try {
-                const res = await axios.get(`${serverUrl}/api/message/conversations`, { withCredentials: true });
-                setMessages(res.data);
-            } catch (error) {
-                console.log("Messages fetch error:", error);
-            }
-        };
-        fetchMessages();
+        // Message backend routes are not implemented yet.
+        setMessages([]);
     }, []);
 
     return { messages };

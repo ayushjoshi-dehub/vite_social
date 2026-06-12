@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 /* ===============================
-   ASYNC THUNKS
+    ASYNC THUNKS
 ================================ */
 
 // Get current user
@@ -30,11 +30,12 @@ export const loginUser = createAsyncThunk(
   "user/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch("http://localhost:8000/api/auth/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(credentials),
       });
 
@@ -53,7 +54,7 @@ export const loginUser = createAsyncThunk(
 );
 
 /* ===============================
-   INITIAL STATE
+    INITIAL STATE
 ================================ */
 
 const initialState = {
@@ -62,17 +63,17 @@ const initialState = {
   isAuthenticated: false,
   isLoading: true,
   error: null,
+  theme: localStorage.getItem("theme") || "light",
 };
 
 /* ===============================
-   SLICE
+    SLICE
 ================================ */
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // ✅ Added this to fix your error
     setUserData: (state, action) => {
       const normalizedUser =
         action.payload?.user ?? action.payload?.data?.user ?? action.payload ?? null;
@@ -80,6 +81,11 @@ const userSlice = createSlice({
       state.isAuthenticated = !!normalizedUser;
       state.error = null;
       state.isLoading = false;
+    },
+
+    setTheme: (state, action) => {
+      state.theme = action.payload;
+      localStorage.setItem("theme", action.payload);
     },
 
     logout: (state) => {
@@ -136,8 +142,8 @@ const userSlice = createSlice({
 });
 
 /* ===============================
-   EXPORTS
+    EXPORTS
 ================================ */
 
-export const { setUserData, logout, clearError } = userSlice.actions;
+export const { setUserData, setTheme, logout, clearError } = userSlice.actions;
 export default userSlice.reducer;

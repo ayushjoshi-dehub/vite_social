@@ -144,11 +144,10 @@ export default function Home() {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const [postsRes, storiesRes, suggestedRes, messagesRes] = await Promise.allSettled([
+        const [postsRes, storiesRes, suggestedRes] = await Promise.allSettled([
           axios.get(`${serverUrl}/api/post`, { withCredentials: true }),
           axios.get(`${serverUrl}/api/story/feed`, { withCredentials: true }),
           axios.get(`${serverUrl}/api/user/suggested`, { withCredentials: true }),
-          axios.get(`${serverUrl}/api/message/conversations`, { withCredentials: true }),
         ]);
 
         if (postsRes.status === "fulfilled") {
@@ -163,7 +162,6 @@ export default function Home() {
           }));
           setSuggested(normalizedSuggested);
         }
-        if (messagesRes.status === "fulfilled") setMessages(messagesRes.value.data);
 
         const storyFeed = storiesRes.status === "fulfilled" ? storiesRes.value?.data?.stories || [] : [];
         const mappedFeedStories = Array.isArray(storyFeed) ? storyFeed.map(mapStoryForUi) : [];

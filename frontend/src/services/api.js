@@ -46,7 +46,7 @@ const api = {
                 body: JSON.stringify(payload)
             }),
         logout: () =>
-            api.request("/auth/logout", {
+            api.request("/auth/signout", {
                 method: "POST"
             })
     },
