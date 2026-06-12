@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import BottomNav from '../components/BottomNav';
-
-const serverUrl = "http://localhost:8000";
+import { API_BASE_URL } from '../config';
 
 // ── Icons ────────────────────────────────────────────────
 const HeartIcon = ({ filled }) => (

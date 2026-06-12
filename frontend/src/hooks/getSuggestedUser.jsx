@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSuggestedUser } from "../redux/userSlice"; // bring in action for suggested users
+import { setSuggestedUser } from "../redux/userSlice";
+import { API_BASE_URL } from "../config";
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = API_BASE_URL.replace(/\/api$/, "");
 
 function getSuggestedUser() {
     const dispatch = useDispatch();

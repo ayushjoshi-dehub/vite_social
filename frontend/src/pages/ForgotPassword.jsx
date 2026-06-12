@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 import { 
   Mail, 
   Lock, 
@@ -103,7 +104,7 @@ function ForgotPassword() {
   const [resendLoading, setResendLoading] = useState(false);
   const [cooldown, setCooldown] = useState(0);
 
-  const serverUrl = "http://localhost:8000";
+  const serverUrl = API_BASE_URL.replace(/\/api$/, "");
 
   const handleStep1 = async (e) => {
     e.preventDefault();

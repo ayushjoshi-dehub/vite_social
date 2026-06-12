@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setUserData } from "../redux/userSlice"; // adjust path if different
+import { setUserData } from "../redux/userSlice";
+import { API_BASE_URL } from "../config";
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = API_BASE_URL.replace(/\/api$/, "");
 
 function getCurrentUser() {
     const dispatch = useDispatch();

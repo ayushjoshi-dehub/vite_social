@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Avatar from '../components/Avatar';
+import { API_BASE_URL } from '../config';
 import {
   Settings,
   Grid3x3,
@@ -38,7 +39,7 @@ import {
 import { setUserData } from '../redux/userSlice';
 import BottomNav from '../components/BottomNav';
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = API_BASE_URL.replace(/\/api$/, "");
 
 const Spinner = () => (
   <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

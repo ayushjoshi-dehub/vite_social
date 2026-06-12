@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 import { 
   PlusIcon,
   ImageIcon,
@@ -13,7 +14,7 @@ import {
 import BottomNav from '../components/BottomNav';
 import Avatar from '../components/Avatar';
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = API_BASE_URL.replace(/\/api$/, "");
 
 const MusicIcon = ({ className = "w-4 h-4" }) => <span className={className}>♫</span>;
 const LocationIcon = ({ className = "w-4 h-4" }) => <span className={className}>📍</span>;

@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { getCurrentUser } from "../redux/userSlice";
 import { Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
-
-const serverUrl = "http://localhost:8000";
+import { API_BASE_URL } from "../config";
 
 const Spinner = () => (
   <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -31,7 +30,7 @@ function Signin() {
     setLoading(true);
     setErr("");
     try {
-      await axios.post(`${serverUrl}/api/auth/signin`, credentials, { withCredentials: true });
+      await axios.post(`${API_BASE_URL}/auth/signin`, credentials, { withCredentials: true });
       await dispatch(getCurrentUser());
       navigate("/home");
     } catch (error) {

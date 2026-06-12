@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef, createContext, useContext } from "react";
+import { API_BASE_URL } from "../config";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -25,7 +26,7 @@ import StoryHeader from "../components/StoryHeader";
 import { HeartIcon } from "../components/Icons";
 import { setUserData } from "../redux/userSlice";
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = API_BASE_URL.replace(/\/api$/, '');
 
 const themes = {
   dark: {

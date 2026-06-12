@@ -1,5 +1,6 @@
 // src/redux/userSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { API_BASE_URL } from "../config";
 
 /* ===============================
     ASYNC THUNKS
@@ -10,7 +11,7 @@ export const getCurrentUser = createAsyncThunk(
   "user/getCurrentUser",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch("http://localhost:8000/api/user/current", {
+      const res = await fetch(`${API_BASE_URL}/user/current`, {
         method: "GET",
         credentials: "include",
       });
@@ -30,7 +31,7 @@ export const loginUser = createAsyncThunk(
   "user/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await fetch("http://localhost:8000/api/auth/signin", {
+      const res = await fetch(`${API_BASE_URL}/auth/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

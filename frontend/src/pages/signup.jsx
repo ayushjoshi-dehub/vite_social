@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../redux/userSlice";
+import { API_BASE_URL } from "../config";
 
 function Signup() {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ function Signup() {
     setLoading(true);
     setErr("");
     try {
-        const res = await axios.post("http://localhost:8000/api/auth/signup", formData, { withCredentials: true });
+        const res = await axios.post(`${API_BASE_URL}/auth/signup`, formData, { withCredentials: true });
         console.log(res.data.message);
         await dispatch(getCurrentUser());
         navigate("/home");

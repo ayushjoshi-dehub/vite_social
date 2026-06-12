@@ -1,8 +1,9 @@
 // hooks/useRealData.js
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
-const serverUrl = "http://localhost:8000";
+const serverUrl = API_BASE_URL.replace(/\/api$/, "");
 
 // Fetch posts from followed users + own posts
 export const usePosts = () => {
