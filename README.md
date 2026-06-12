@@ -1,6 +1,7 @@
 # Social Media Platform
 
 A full-stack social media application built with React, Node.js, Express, and MongoDB. Features include user authentication, posts, stories, reels, and real-time notifications.
+https://ayushjoshi-dehub.github.io/vite_social
 
 ## 📋 Table of Contents
 
